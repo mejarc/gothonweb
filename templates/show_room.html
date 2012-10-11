@@ -1,0 +1,31 @@
+$def with (room)
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<h1 class="brand">
+			$room.name
+		</h1>
+	</div>
+</div>
+
+<div class="container">
+<div>$room.description</div>
+
+$if room.name == "death":
+    <p><a href="/">Play again!</a></p>
+$else:
+    <form action="/game" method="post">
+        <div class="well">
+            <label>
+                You:
+            </label>
+            <select name="action">
+            $for path in room.paths:
+                <option value="$path">$path</option>
+            </select>
+
+        </div>
+        <div>
+            <input class="btn btn-large btn-inverse" type="submit" value="Submit" /> 
+        </div>
+    </form>
+</div>
