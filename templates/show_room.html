@@ -10,7 +10,7 @@ $def with (room)
 <div class="container">
 <div>$room.description</div>
 
-$if room.name == "death":
+$if room.name in ("death", "The End"):
     <p><a href="/">Play again!</a></p>
 $else:
     <form action="/game" method="post">
@@ -22,7 +22,6 @@ $else:
             $for path in room.paths:
                 <option value="$path">$path</option>
             </select>
-
         </div>
         <div>
             <input class="btn btn-large btn-inverse" type="submit" value="Submit" /> 

@@ -7,15 +7,14 @@ def test_index():
     resp = app.request("/lugly")
     assert_response(resp, status="404")
     
-    #hello
+    #index
     resp = app.request("/")
     assert_response(resp)
     
     #defaults for form values
-    resp = app.request("/game", method="POST")  #must, must be all uppercase, or tests won't work
-    assert_response(resp, contains="Nobody")
+#    resp = app.request("/game", method="POST")  #must, must be all uppercase, or tests won't work
+#    assert_response(resp, contains="action")
     
-    #mock data
-    data = {"name": "Zed", "greet": "Hola"}
-    resp = app.request("/hello", method="POST", data= data)
-    assert_response(resp, contains="Zed")
+    #game
+    resp = app.request("/game")
+    assert_response(resp)
